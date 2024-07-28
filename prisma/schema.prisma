@@ -1,0 +1,56 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique @db.VarChar(200)
+  name      String   @db.VarChar(255)
+  password  String   @db.VarChar(100)
+  region    String?  @db.VarChar(255)
+  role      Role     @default(USER)
+  is_active Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Iots {
+  id               Int      @id @default(autoincrement())
+  id_iot           Int
+  wind_speed       Int
+  air_temperature  Int
+  air_humidity     Int
+  soil_ph          Int
+  soil_moisture    Int
+  soil_temperature Int
+  device_status    Boolean
+  createdAt        DateTime @default(now())
+
+  @@map("iots")
+}
+
+model Sprinkles {
+  id        Int     @id @default(autoincrement())
+  id_iot    Int?
+  is_active Boolean @default(false)
+
+  @@map("sprinkles")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
