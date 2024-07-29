@@ -33,12 +33,12 @@ CREATE TABLE "iots" (
 );
 
 -- CreateTable
-CREATE TABLE "sprinkles" (
+CREATE TABLE "sprinklers" (
     "id" SERIAL NOT NULL,
     "id_iot" INTEGER,
     "is_active" BOOLEAN NOT NULL DEFAULT false,
 
-    CONSTRAINT "sprinkles_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "sprinklers_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex

@@ -27,7 +27,7 @@ model User {
   @@map("users")
 }
 
-model Iots {
+model Iot {
   id               Int      @id @default(autoincrement())
   id_iot           Int
   wind_speed       Int
@@ -42,12 +42,12 @@ model Iots {
   @@map("iots")
 }
 
-model Sprinkles {
+model Sprinkler {
   id        Int     @id @default(autoincrement())
   id_iot    Int?
   is_active Boolean @default(false)
 
-  @@map("sprinkles")
+  @@map("sprinklers")
 }
 
 enum Role {
