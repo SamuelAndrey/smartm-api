@@ -23,7 +23,7 @@ const create = async (request) => {
 const get = async () => {
   return prismaClient.iot.findFirst({
     orderBy: {
-      createdAt: 'desc'
+      created_at: 'desc'
     },
     select: {
       id_iot: true,

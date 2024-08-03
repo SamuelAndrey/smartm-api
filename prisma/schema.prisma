@@ -9,20 +9,20 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique @db.VarChar(200)
-  name      String   @db.VarChar(255)
-  password  String   @db.VarChar(100)
-  region    String?  @db.VarChar(255)
-  role      Role     @default(USER)
-  is_active Boolean  @default(true)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         Int      @id @default(autoincrement())
+  email      String   @unique @db.VarChar(200)
+  name       String   @db.VarChar(255)
+  password   String   @db.VarChar(100)
+  region     String?  @db.VarChar(255)
+  role       Role     @default(USER)
+  is_active  Boolean  @default(true)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 
   @@map("users")
 }
@@ -37,7 +37,7 @@ model Iot {
   soil_moisture    Int
   soil_temperature Int
   device_status    Boolean
-  createdAt        DateTime @default(now())
+  created_at       DateTime @default(now())
 
   @@map("iots")
 }
